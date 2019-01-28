@@ -1,5 +1,5 @@
 # FRC2019_Examples
-## These are all of the examples provided by WPI. 
+## All of the examples provided by WPI for 2019. 
 
 This is the git repository for all of the examples that were provided by WPI.  They were created by Visual Code's "Create Project", and selecting each of the example types.  
 
