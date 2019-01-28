@@ -13,11 +13,13 @@ void Robot::RobotInit() {
   
 }
 
+void Robot::RobotPeriodic() {
 
-void Robot::RobotPeriodic() {}
+}
 
 void Robot::AutonomousInit() {
-  std::cout << "I'm in AutonomouseInit()" << std::endl;
+  
+  std::cout << "I'm in AutonomousInit()" << std::endl;
 }
 
 void Robot::AutonomousPeriodic() {
@@ -64,13 +66,17 @@ void Robot::TeleopPeriodic() {
     m_gamepad.SetRumble(frc::GenericHID::RumbleType::kRightRumble, 0.0);
   }
 */
-  double currentDistance = m_ultrasonic.GetValue() * 0.140-1.32;
+
+  // output the distance, in inches, from the ultrasonic sensor 
+  // equation determined from measuring the actual readings and 
+  // graphing the results: y = mx + b
+  double currentDistance = 0.140 * m_ultrasonic.GetValue() - 1.32;
   std::cout << currentDistance << std::endl;
-
-
 }
 
-void Robot::TestPeriodic() {}
+void Robot::TestPeriodic() {
+
+}
 
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }

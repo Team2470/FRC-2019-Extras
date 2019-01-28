@@ -7,11 +7,10 @@
 
 #pragma once
 
-#include <string>
-#include <XboxController.h>
+#include <frc/XboxController.h>
 #include <frc/TimedRobot.h>
 #include <frc/smartdashboard/SendableChooser.h>
-#include <Ultrasonic.h>
+#include <frc/Ultrasonic.h>
 #include <frc/AnalogInput.h>
 
 class Robot : public frc::TimedRobot {
@@ -32,6 +31,4 @@ class Robot : public frc::TimedRobot {
 
     frc::AnalogInput m_ultrasonic{2};
    
-    static constexpr double kValueToInches = 0.125;
-
 };
