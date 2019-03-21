@@ -71,7 +71,7 @@ void Robot::TeleopPeriodic() {
   double throttle = m_gamepad.GetY( frc::GenericHID::kRightHand);
   
   double frontLeftSpeed = 0.0;
-	double rearLeftSpeed = 0.0;
+  double rearLeftSpeed = 0.0;
   double frontRightSpeed = 0.0;
 	double rearRightSpeed = 0.0;
 
@@ -95,10 +95,10 @@ void Robot::TeleopPeriodic() {
     frontLeftSpeed = throttle;
   }
 
-  m_frontLeftMotor.SetSpeed(frontLeftSpeed);
-	m_rearLeftMotor.SetSpeed(frontLeftSpeed);
-  m_frontRightMotor.SetSpeed(frontLeftSpeed);
-	m_rearRightMotor.SetSpeed(frontLeftSpeed);
+  m_frontLeftMotor.Set(frontLeftSpeed);
+	m_rearLeftMotor.Set(frontLeftSpeed);
+  m_frontRightMotor.Set(frontLeftSpeed);
+	m_rearRightMotor.Set(frontLeftSpeed);
 
 }
 
