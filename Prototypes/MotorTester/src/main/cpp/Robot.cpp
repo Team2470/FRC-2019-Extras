@@ -16,9 +16,6 @@ void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
-
-  m_frontLeftMotors.SetInverted(true);
-  m_backLeftMotors.SetInverted(true);
 }
 
 /**
@@ -71,42 +68,37 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 
-  double xr_move = m_gamepad.GetX( frc::GenericHID::kRightHand);
-  double yr_move = m_gamepad.GetY( frc::GenericHID::kRightHand);
-  double xl_move = m_gamepad.GetX( frc::GenericHID::kLeftHand);
-  double yl_move = m_gamepad.GetY( frc::GenericHID::kLeftHand);
+  double throttle = m_gamepad.GetY( frc::GenericHID::kRightHand);
+  
+  double frontLeftSpeed = 0.0;
+	double rearLeftSpeed = 0.0;
+  double frontRightSpeed = 0.0;
+	double rearRightSpeed = 0.0;
 
-  // m_robotDrive.DriveCartesian(y_move, x_move, 0.0);
-  m_robotDrive1.TankDrive(xr_move, yr_move);
-  m_robotDrive2.TankDrive(xl_move, yl_move);
+  if ( m_gamepad.GetAButton() ) {
+    std::cout << "Back Right" << std::endl;
+    rearRightSpeed = throttle;
+  }
 
-  // if ( m_gamepad.GetAButton() ) {
-  //   std::cout << "Back Right" << std::endl;
-  //   m_backRightMotors.SetSpeed( 0.5 );
-  // } else {
-  //   m_backRightMotors.SetSpeed( 0.0 );
-  // }
+  if ( m_gamepad.GetBButton() ) {
+    std::cout << "Rear Left" << std::endl;
+    rearLeftSpeed = throttle;
+  }
 
-  // if ( m_gamepad.GetBButton() ) {
-  //   std::cout << "Back Left" << std::endl;
-  //   m_backLeftMotors.SetSpeed( 0.5 );
-  // } else {
-  //   m_backLeftMotors.SetSpeed( 0.0 );
-  // }
+  if ( m_gamepad.GetXButton() ) {
+    std::cout << "Rear Right" << std::endl;
+    rearRightSpeed = throttle;
+  }
 
-  // if ( m_gamepad.GetXButton() ) {
-  //   std::cout << "Front Right" << std::endl;
-  //   m_frontRightMotors.SetSpeed( 0.5 );
-  // } else {
-  //   m_frontRightMotors.SetSpeed( 0.0 );
-  // }
+  if ( m_gamepad.GetYButton() ) {
+    std::cout << "Front Left" << std::endl;
+    frontLeftSpeed = throttle;
+  }
 
-  // if ( m_gamepad.GetYButton() ) {
-  //   std::cout << "Front Left" << std::endl;
-  //   m_frontLeftMotors.SetSpeed( 0.5 );
-  // } else {
-  //   m_backLeftMotors.SetSpeed( 0.0 );
-  // }
+  m_frontLeftMotor.SetSpeed(frontLeftSpeed);
+	m_rearLeftMotor.SetSpeed(frontLeftSpeed);
+  m_frontRightMotor.SetSpeed(frontLeftSpeed);
+	m_rearRightMotor.SetSpeed(frontLeftSpeed);
 
 }
 

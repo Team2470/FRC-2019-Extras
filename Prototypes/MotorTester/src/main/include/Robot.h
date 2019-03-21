@@ -35,16 +35,15 @@ class Robot : public frc::TimedRobot {
 
   static constexpr int kGamepad = 0;
 	static constexpr int kFrontLeftMotors = 0;
-  static constexpr int kBackLeftMotors = 1;
+  static constexpr int kRearLeftMotors = 1;
   static constexpr int kFrontRightMotors = 2;
-	static constexpr int kBackRightMotors = 3;
+	static constexpr int kRearRightMotors = 3;
 
   frc::XboxController m_gamepad{kGamepad};
-	frc::Spark m_frontLeftMotors{kFrontLeftMotors};
-	frc::Spark m_backLeftMotors{kBackLeftMotors};
-  frc::Spark m_frontRightMotors{kFrontRightMotors};
-	frc::Spark m_backRightMotors{kBackRightMotors};
-	// frc::MecanumDrive m_robotDrive{m_frontLeftMotors, m_backLeftMotors, m_frontRightMotors, m_backRightMotors};
-  frc::DifferentialDrive m_robotDrive1{m_frontLeftMotors, m_backLeftMotors };
-  frc::DifferentialDrive m_robotDrive2{m_frontRightMotors, m_backRightMotors };
+
+	frc::Spark m_frontLeftMotor{kFrontLeftMotors};
+	frc::Spark m_rearLeftMotor{kRearLeftMotors};
+  frc::Spark m_frontRightMotor{kFrontRightMotors};
+	frc::Spark m_rearRightMotor{kRearRightMotors};
+	
 };
