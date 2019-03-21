@@ -7,12 +7,14 @@
 
 #pragma once
 
-#include <frc/XboxController.h>
+#include <string>
+
 #include <frc/TimedRobot.h>
+#include <frc/XboxController.h>
+#include <frc/Spark.h>
+#include <frc/SpeedControllerGroup.h>
+#include <frc/drive/MecanumDrive.h>
 #include <frc/smartdashboard/SendableChooser.h>
-#include <frc/Ultrasonic.h>
-#include <frc/AnalogInput.h>
-#include <Spark.h>
 #include <frc/drive/DifferentialDrive.h>
 
 class Robot : public frc::TimedRobot {
@@ -26,20 +28,23 @@ class Robot : public frc::TimedRobot {
   void TestPeriodic() override;
 
  private:
-  	frc::XboxController m_gamepad{0}; 
+  frc::SendableChooser<std::string> m_chooser;
+  const std::string kAutoNameDefault = "Default";
+  const std::string kAutoNameCustom = "My Auto";
+  std::string m_autoSelected;
 
-    int frameCounter = 0;
-    int countCounter = 1;
+  static constexpr int kGamepad = 0;
+	static constexpr int kFrontLeftMotors = 0;
+  static constexpr int kRearLeftMotors = 1;
+  static constexpr int kFrontRightMotors = 2;
+	static constexpr int kRearRightMotors = 3;
 
-    frc::AnalogInput m_ultrasonic{2};
+  frc::XboxController m_gamepad{kGamepad};
 
-    // todo: create variable for motor controller
-    
-    frc::Spark m_leftMotor {1};
-    frc::Spark m_rightMotor{0};
-    frc::DifferentialDrive m_robotDrive{m_leftMotor, m_rightMotor};
+	frc::Spark m_frontLeftMotors{kFrontLeftMotors};
+	frc::Spark m_rearLeftMotors{kRearLeftMotors};
+  frc::Spark m_frontRightMotors{kFrontRightMotors};
+	frc::Spark m_rearRightMotors{kRearRightMotors};
 
-    
-  
-   
+	frc::MecanumDrive m_robotDrive{m_frontLeftMotors, m_rearLeftMotors, m_frontRightMotors, m_rearRightMotors};
 };

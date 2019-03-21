@@ -7,13 +7,12 @@
 
 #pragma once
 
-#include <frc/XboxController.h>
+#include <string>
+
 #include <frc/TimedRobot.h>
 #include <frc/smartdashboard/SendableChooser.h>
-#include <frc/Ultrasonic.h>
-#include <frc/AnalogInput.h>
-#include <Spark.h>
-#include <frc/drive/DifferentialDrive.h>
+
+#include <frc/ADXRS450_Gyro.h>
 
 class Robot : public frc::TimedRobot {
  public:
@@ -26,20 +25,10 @@ class Robot : public frc::TimedRobot {
   void TestPeriodic() override;
 
  private:
-  	frc::XboxController m_gamepad{0}; 
+  frc::SendableChooser<std::string> m_chooser;
+  const std::string kAutoNameDefault = "Default";
+  const std::string kAutoNameCustom = "My Auto";
+  std::string m_autoSelected;
+  frc::ADXRS450_Gyro m_Gyro;
 
-    int frameCounter = 0;
-    int countCounter = 1;
-
-    frc::AnalogInput m_ultrasonic{2};
-
-    // todo: create variable for motor controller
-    
-    frc::Spark m_leftMotor {1};
-    frc::Spark m_rightMotor{0};
-    frc::DifferentialDrive m_robotDrive{m_leftMotor, m_rightMotor};
-
-    
-  
-   
 };

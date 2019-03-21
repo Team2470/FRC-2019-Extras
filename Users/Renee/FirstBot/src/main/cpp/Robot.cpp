@@ -67,6 +67,10 @@ void Robot::TeleopPeriodic() {
   }
 */
 
+// todo add the arcade drive code here....
+m_robotDrive.TankDrive(m_gamepad.GetY(frc::GenericHID::kRightHand), m_gamepad.GetX(frc::GenericHID::kRightHand));
+
+
   // output the distance, in inches, from the ultrasonic sensor 
   // equation determined from measuring the actual readings and 
   // graphing the results: y = mx + b
